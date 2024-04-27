@@ -1,5 +1,3 @@
-
-
 =begin
 Задача 1.
  Разработайте функцию,
@@ -30,7 +28,6 @@
     В консоли должна появиться таблица.
      Например, если на вход пришло число 5,
       то получим:
-
 =end
 
 class  TestTasks
@@ -54,15 +51,18 @@ class  TestTasks
 		end
 	end
 
-	# def self.task_1a(n) # case-when-else 
-	#   case n
+  def self.task_4(num)
 
-	# 	when 1 || 41 then puts "#{n.to_s} - компьютер" 
-	# 	when 2..4 then puts "#{n.to_s} - компьютера"	
-	# 	else 
-	# 		puts "#{n.to_s} - компьютеров" 			
-	# 	end
-	# end
+  	puts "   #{(1..num).to_a.join('  ')}"	
+ 		
+  	(1..num).each do |i| 
+    	row = [i]
+    	(1..num).each do |j|
+      	row << i * j
+    	end
+    		puts row.join("  ")
+  	end
+end
 
 end
 
@@ -70,14 +70,11 @@ TestTasks .task_1(25)
 TestTasks .task_1(1)
 TestTasks .task_1(41)
 TestTasks .task_1(3)
-TestTasks .task_1(21)
 TestTasks .task_1(32)
 TestTasks .task_1(1048)
 
 puts '---------------------------------------'
 
-# TestTasks .task_1a(25)
-# TestTasks .task_1a(1)
-# TestTasks .task_1a(41)
-# TestTasks .task_1a(3)
-# TestTasks .task_1a(1048)
+TestTasks .task_4(5)
+
+puts '---------------------------------------'
