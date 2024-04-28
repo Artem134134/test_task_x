@@ -9,21 +9,17 @@
 
 def task_1(n)
 
-		if n >= 0
-			if n == 0
-				puts "#{n.to_s} - компьютеров" 
-
-			elsif n % 100 >= 10 && n % 100 <= 20
-				puts "#{n.to_s} - компьютеров"
-
-			elsif n % 10 == 1 
-				puts "#{n.to_s} - компьютер"
-
-			elsif n % 10 >= 2 && n % 10 <= 4
-				puts "#{n.to_s} - компьютера"
-			else
-				puts "#{n.to_s} - компьютеров" 	
-			end
-		end
-
+	arr_computers = ["компьютеров", "компьютер", "компьютера"]
+  
+  if (n % 100).between?(11, 19)
+    arr_index = 0
+  elsif n % 10 == 1
+    arr_index = 1
+  elsif (2..4).cover?(n % 10)
+    arr_index = 2
+  else
+    arr_index = 0
+  end
+  
+  p "#{n} #{arr_computers[arr_index]}"
 end

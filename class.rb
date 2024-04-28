@@ -1,40 +1,48 @@
 class  TestTasks
 
 	def self.task_1(n)
-		if n >= 0
-			if n == 0
-				puts "#{n.to_s} - компьютеров" 
-
-			elsif n % 100 >= 10 && n % 100 <= 20
-				puts "#{n.to_s} - компьютеров"
-
-			elsif n % 10 == 1 
-				puts "#{n.to_s} - компьютер"
-
-			elsif n % 10 >= 2 && n % 10 <= 4
-				puts "#{n.to_s} - компьютера"
-			else
-				puts "#{n.to_s} - компьютеров" 	
-			end
-		end
-	end
+		arr_computers = ["компьютеров", "компьютер", "компьютера"]
+  
+  if (n % 100).between?(11, 19)
+    arr_index = 0
+  elsif n % 10 == 1
+    arr_index = 1
+  elsif (2..4).cover?(n % 10)
+    arr_index = 2
+  else
+    arr_index = 0
+  end
+  
+  p "#{n} #{arr_computers[arr_index]}"
+end
 
 	def self.task_2(numbers = [])
-		min_num = numbers.min # наименьшее число в массиве
+		min_num = numbers.min 
 		
-	  # Создаем массив всех возможных делителей наименьшего числа
     divisors = (2..min_num).to_a	
 
-    # Фильтруем массив делителей, оставляя только те,
-    # которые являются общими для всех чисел
     actual_divisors = divisors.select do |divisor|
     	numbers.all? { |num| num % divisor == 0 }
   	end
-  	print actual_divisors
+  	p actual_divisors
 	end
 
-  def self.task_4(num)
-  	
+	def self.task_3(min, max)
+    arr = []
+  (min..max).each do |num|
+    is_prime = true
+    (2..(Math.sqrt(num).to_i)).each do |i|
+      if num % i == 0
+        is_prime = false
+        break
+      end
+    end
+    arr << num if is_prime && num > 1
+  end
+    p arr
+end
+
+  def self.task_4(num) 	
   	puts "   #{(1..num).to_a.join('  ')}"	
  		
   	(1..num).each do |i| 
@@ -56,11 +64,12 @@ TestTasks.task_1(32)
 TestTasks.task_1(1048)
 
 puts '---------------------------------------'
-
 TestTasks.task_2([42,12,18])
 
 puts '---------------------------------------'
+TestTasks.task_3(11,20)
 
+puts '---------------------------------------'
 TestTasks.task_4(5)
 
 puts '---------------------------------------'
